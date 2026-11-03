@@ -16,8 +16,8 @@ from analysis.export_public_release import (DOC_ALLOWLIST, ExportError, export_r
 
 class ReleaseExportTests(unittest.TestCase):
     def test_retired_task_projection_preserves_input_mapping_order(self):
-        with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
+        with tempfile.TemporaryDirectory(dir=self.temp_base) as temp:
+            root = Path(temp).resolve()
             task = {"id": "demo", "family": "code_config", "split": "holdout", "prompt": "public",
                     "schema": {}, "metadata": {"not_exported": True},
                     "public": {"examples": [{"payload": {"patch": {"b": 2, "a": 1}}, "expected": {}}]}}
@@ -27,15 +27,15 @@ class ReleaseExportTests(unittest.TestCase):
             self.assertEqual(list(exported[0]["public"]["examples"][0]["payload"]["patch"]), ["b", "a"])
 
     def test_retired_task_projection_rejects_private_case_container(self):
-        with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
+        with tempfile.TemporaryDirectory(dir=self.temp_base) as temp:
+            root = Path(temp).resolve()
             (root / "tasks.public.json").write_text(json.dumps([{"private": {"cases": []}}]))
             with self.assertRaises(ExportError):
                 _public_task_projection(root, Path("tasks.public.json"), 1)
 
     def test_retired_task_projection_rejects_wrong_count(self):
-        with tempfile.TemporaryDirectory() as temp:
-            root = Path(temp)
+        with tempfile.TemporaryDirectory(dir=self.temp_base) as temp:
+            root = Path(temp).resolve()
             (root / "tasks.public.json").write_text("[]")
             with self.assertRaises(ExportError):
                 _public_task_projection(root, Path("tasks.public.json"), 60)

@@ -575,9 +575,9 @@
       "sha256": "d9aebcbbc8b03dc937cd68730128e1e49c65df479941377651583c31ef29377b"
     },
     {
-      "bytes": 33003,
+      "bytes": 33087,
       "path": "tests/test_release_export.py",
-      "sha256": "8e154b5dae6fcdd6d70c9a598ba5c184fa952eba28544ce37dc0f3e75ffe19b9"
+      "sha256": "92a85e137e03b962157f11e62c0029f271ada0ea86201f7d3e166c09dc9994e8"
     },
     {
       "bytes": 5479,
