@@ -1,0 +1,38 @@
+{
+  "architectures": [
+    "single_tool",
+    "single_self_review",
+    "hierarchy_tool",
+    "best_of_three",
+    "adaptive_tools"
+  ],
+  "candidate": "adaptive_tools",
+  "code_hash": "cf1437bfcd01b5fab047bb54dc46dfdb69bad76fac0475fb1523407adb4de47f",
+  "created_utc": "2026-11-03T03:58:27.267429+00:00",
+  "development_results_hash": "460440b06ff90a87d4248207bbec303ebd6910a9be93a24944319be8f938ccdd",
+  "plan_hash": "c200d3175b15c1af04df8b3f3b6b7ea37cbb1753a29cf29b164ed8c298eadbd0",
+  "protocol_hash": "5165bedd544ac9daf29c2b689c062e791797e498faaf5e0177ed3fc31cc9d8e6",
+  "ranking": [
+    {
+      "name": "adaptive_tools",
+      "successes": 8,
+      "tokens": 72645
+    },
+    {
+      "name": "bazaar_tool",
+      "successes": 7,
+      "tokens": 100011
+    },
+    {
+      "name": "contract_team",
+      "successes": 7,
+      "tokens": 140011
+    },
+    {
+      "name": "evidence_gated",
+      "successes": 5,
+      "tokens": 120893
+    }
+  ],
+  "rule": "Highest development full success count; ties total measured tokens then lexical name"
+}

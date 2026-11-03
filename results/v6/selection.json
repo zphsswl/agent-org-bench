@@ -1,0 +1,36 @@
+{
+  "architectures": [
+    "single_tool",
+    "single_self_review",
+    "hierarchy_tool",
+    "best_of_three",
+    "adaptive_tools"
+  ],
+  "candidate": "adaptive_tools",
+  "code_hash": "cf1437bfcd01b5fab047bb54dc46dfdb69bad76fac0475fb1523407adb4de47f",
+  "development_results_hash": "460440b06ff90a87d4248207bbec303ebd6910a9be93a24944319be8f938ccdd",
+  "plan_hash": "872059e76ce82196034d8ea1f874f1c5df3e4ad9fef2427790f301117cf5bb58",
+  "protocol_hash": "c503a28d886f8094f03418405b4278337be7f6291f7905b47ddfd99c3ec0edce",
+  "ranking": [
+    {
+      "name": "adaptive_tools",
+      "successes": 8,
+      "tokens": 72645
+    },
+    {
+      "name": "bazaar_tool",
+      "successes": 7,
+      "tokens": 100011
+    },
+    {
+      "name": "contract_team",
+      "successes": 7,
+      "tokens": 140011
+    },
+    {
+      "name": "evidence_gated",
+      "successes": 5,
+      "tokens": 120893
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+{
+  "adaptive_tools": {
+    "calls": 19,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.4361883836420157,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      0.6666666666666666,
+      1.0
+    ],
+    "errors": 1,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      }
+    },
+    "input_tokens": 59076,
+    "mean_score": 0.8888888888888888,
+    "mean_wall_s": 14.556654499986003,
+    "output_tokens": 13569,
+    "p95_wall_s": 25.42271359998267,
+    "success_rate": 0.8888888888888888,
+    "successes": 8,
+    "tasks": 9,
+    "tokens_per_success": 9080.625
+  },
+  "bazaar_tool": {
+    "calls": 27,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.3250772725309046,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      0.4444444444444444,
+      1.0
+    ],
+    "errors": 2,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      }
+    },
+    "input_tokens": 77819,
+    "mean_score": 0.7777777777777778,
+    "mean_wall_s": 22.231080233326388,
+    "output_tokens": 22192,
+    "p95_wall_s": 50.40615819999948,
+    "success_rate": 0.7777777777777778,
+    "successes": 7,
+    "tasks": 9,
+    "tokens_per_success": 14287.285714285714
+  },
+  "best_of_three": {
+    "calls": 33,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.10285505030868242,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      0.2222222222222222,
+      0.8888888888888888
+    ],
+    "errors": 3,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 0.5888888888888889,
+        "success_rate": 0.3333333333333333
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      }
+    },
+    "input_tokens": 88629,
+    "mean_score": 0.6407407407407407,
+    "mean_wall_s": 26.392482488907667,
+    "output_tokens": 26551,
+    "p95_wall_s": 41.40691040002275,
+    "success_rate": 0.5555555555555556,
+    "successes": 5,
+    "tasks": 9,
+    "tokens_per_success": 23036.0
+  },
+  "contract_team": {
+    "calls": 31,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.3250772725309046,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      0.4444444444444444,
+      1.0
+    ],
+    "errors": 2,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 0.3333333333333333,
+        "success_rate": 0.3333333333333333
+      }
+    },
+    "input_tokens": 112050,
+    "mean_score": 0.7777777777777778,
+    "mean_wall_s": 30.326147911125897,
+    "output_tokens": 27961,
+    "p95_wall_s": 40.17735840007663,
+    "success_rate": 0.7777777777777778,
+    "successes": 7,
+    "tasks": 9,
+    "tokens_per_success": 20001.571428571428
+  },
+  "evidence_gated": {
+    "calls": 29,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.10285505030868242,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      0.2222222222222222,
+      0.8888888888888888
+    ],
+    "errors": 3,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 0.5888888888888889,
+        "success_rate": 0.3333333333333333
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      }
+    },
+    "input_tokens": 98336,
+    "mean_score": 0.6407407407407407,
+    "mean_wall_s": 23.321000811126495,
+    "output_tokens": 22557,
+    "p95_wall_s": 50.531426599947736,
+    "success_rate": 0.5555555555555556,
+    "successes": 5,
+    "tasks": 9,
+    "tokens_per_success": 24178.6
+  },
+  "hierarchy_tool": {
+    "calls": 42,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.0,
+      0.8971449496913175
+    ],
+    "ci95_task_cluster": [
+      0.1111111111111111,
+      0.7777777777777778
+    ],
+    "errors": 5,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 0.0,
+        "success_rate": 0
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      }
+    },
+    "input_tokens": 128935,
+    "mean_score": 0.4444444444444444,
+    "mean_wall_s": 32.75034521110097,
+    "output_tokens": 28755,
+    "p95_wall_s": 45.80510590004269,
+    "success_rate": 0.4444444444444444,
+    "successes": 4,
+    "tasks": 9,
+    "tokens_per_success": 39422.5
+  },
+  "plain_single": {
+    "calls": 9,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.10285505030868242,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      0.2222222222222222,
+      0.8888888888888888
+    ],
+    "errors": 4,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 0.3333333333333333,
+        "success_rate": 0.3333333333333333
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      }
+    },
+    "input_tokens": 22200,
+    "mean_score": 0.5555555555555556,
+    "mean_wall_s": 6.828810877800505,
+    "output_tokens": 6619,
+    "p95_wall_s": 9.918468000018038,
+    "success_rate": 0.5555555555555556,
+    "successes": 5,
+    "tasks": 9,
+    "tokens_per_success": 5763.8
+  },
+  "single_self_review": {
+    "calls": 28,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.5472994947531269,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      1.0,
+      1.0
+    ],
+    "errors": 0,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      }
+    },
+    "input_tokens": 112012,
+    "mean_score": 1.0,
+    "mean_wall_s": 28.465384233329033,
+    "output_tokens": 23215,
+    "p95_wall_s": 35.35941160004586,
+    "success_rate": 1.0,
+    "successes": 9,
+    "tasks": 9,
+    "tokens_per_success": 15025.222222222223
+  },
+  "single_tool": {
+    "calls": 19,
+    "cells": 9,
+    "ci95_hoeffding_conservative": [
+      0.3250772725309046,
+      1.0
+    ],
+    "ci95_task_cluster": [
+      0.4444444444444444,
+      1.0
+    ],
+    "errors": 2,
+    "families": {
+      "code_config": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_ledger": {
+        "cells": 3,
+        "mean_score": 0.6666666666666666,
+        "success_rate": 0.6666666666666666
+      },
+      "code_versions": {
+        "cells": 3,
+        "mean_score": 1.0,
+        "success_rate": 1
+      }
+    },
+    "input_tokens": 56911,
+    "mean_score": 0.7777777777777778,
+    "mean_wall_s": 13.850033122231252,
+    "output_tokens": 13527,
+    "p95_wall_s": 29.038445199956186,
+    "success_rate": 0.7777777777777778,
+    "successes": 7,
+    "tasks": 9,
+    "tokens_per_success": 10062.57142857143
+  }
+}

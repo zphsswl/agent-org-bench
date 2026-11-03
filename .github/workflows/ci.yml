@@ -1,0 +1,44 @@
+name: Offline tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    env:
+      PYTHONUTF8: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+      ANTHROPIC_API_KEY: ""
+      ANTHROPIC_AUTH_TOKEN: ""
+      OPENAI_API_KEY: ""
+      DEEPSEEK_API_KEY: ""
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Check exported sources and tests exist
+        run: >-
+          python -c "from pathlib import Path; assert Path('orgbench/study_v6.py').is_file(), 'Study source missing from export'; assert any(Path('tests').glob('test_*.py')), 'Tests missing from export'"
+      - name: Check package metadata
+        run: python -c "import tomllib; from pathlib import Path; tomllib.loads(Path('pyproject.toml').read_text(encoding='utf-8'))"
+      - name: Run offline unit tests
+        run: python -m unittest discover -s tests
+      - name: Check CLI help without model execution
+        run: python -m orgbench.study_v6 --help
+      - name: Prepare registered public development tasks without credentials
+        run: >-
+          python -m orgbench.study_v6 --out runs/ci_prepare --split dev --model deepseek-v4-pro --protocol docs/protocol_v6.md --plan docs/study_v6_plan.json --prepare-only

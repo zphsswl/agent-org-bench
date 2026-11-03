@@ -1,0 +1,26 @@
+{
+  "archive_hashes": {
+    "code_hash": "cf1437bfcd01b5fab047bb54dc46dfdb69bad76fac0475fb1523407adb4de47f",
+    "plan_hash": "872059e76ce82196034d8ea1f874f1c5df3e4ad9fef2427790f301117cf5bb58",
+    "protocol_hash": "c503a28d886f8094f03418405b4278337be7f6291f7905b47ddfd99c3ec0edce"
+  },
+  "confirmation_independent_tasks": 60,
+  "confirmed_primary_quality_improvement": false,
+  "confirmed_secondary_quality_improvements": {
+    "best_of_three": false,
+    "hierarchy_tool": false,
+    "single_tool": false
+  },
+  "dev_cells": 81,
+  "development_results_are_exploratory": true,
+  "failed_prior_confirmation_cells_excluded": 49,
+  "frozen_candidate": "adaptive_tools",
+  "frozen_source_files": 18,
+  "holdout_cells": 300,
+  "original_plan_file_sha256": "1a7152f241aa08c51aa13e54d7c7541fb76e72786c10c5f09aefdaf213685fd5",
+  "recovery_confirmation": true,
+  "resource_analysis": "Descriptive only; v6 defines no efficiency-confirmation claim.",
+  "results_exported": true,
+  "state": "completed",
+  "valid_for_confirmation": true
+}

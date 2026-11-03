@@ -1,0 +1,197 @@
+{
+  "adaptive_tools": {
+    "calls": 176,
+    "cells": 60,
+    "ci95_hoeffding_conservative": [
+      0.47466984823591774,
+      0.8253301517640823
+    ],
+    "ci95_task_cluster": [
+      0.5333333333333333,
+      0.7666666666666667
+    ],
+    "errors": 16,
+    "families": {
+      "code_config": {
+        "cells": 20,
+        "mean_score": 0.555,
+        "success_rate": 0.45
+      },
+      "code_ledger": {
+        "cells": 20,
+        "mean_score": 0.82,
+        "success_rate": 0.75
+      },
+      "code_versions": {
+        "cells": 20,
+        "mean_score": 0.75,
+        "success_rate": 0.75
+      }
+    },
+    "input_tokens": 592714,
+    "mean_score": 0.7083333333333334,
+    "mean_wall_s": 20.90357498000376,
+    "output_tokens": 146636,
+    "p95_wall_s": 42.73072550003417,
+    "success_rate": 0.65,
+    "successes": 39,
+    "tasks": 60,
+    "tokens_per_success": 18957.69230769231
+  },
+  "best_of_three": {
+    "calls": 223,
+    "cells": 60,
+    "ci95_hoeffding_conservative": [
+      0.458003181569251,
+      0.8086634850974156
+    ],
+    "ci95_task_cluster": [
+      0.5166666666666667,
+      0.75
+    ],
+    "errors": 17,
+    "families": {
+      "code_config": {
+        "cells": 20,
+        "mean_score": 0.66,
+        "success_rate": 0.55
+      },
+      "code_ledger": {
+        "cells": 20,
+        "mean_score": 0.43833333333333335,
+        "success_rate": 0.35
+      },
+      "code_versions": {
+        "cells": 20,
+        "mean_score": 1.0,
+        "success_rate": 1
+      }
+    },
+    "input_tokens": 604175,
+    "mean_score": 0.6994444444444444,
+    "mean_wall_s": 25.877894565009047,
+    "output_tokens": 178643,
+    "p95_wall_s": 33.45446700009052,
+    "success_rate": 0.6333333333333333,
+    "successes": 38,
+    "tasks": 60,
+    "tokens_per_success": 20600.473684210527
+  },
+  "hierarchy_tool": {
+    "calls": 270,
+    "cells": 60,
+    "ci95_hoeffding_conservative": [
+      0.35800318156925104,
+      0.7086634850974156
+    ],
+    "ci95_task_cluster": [
+      0.4,
+      0.65
+    ],
+    "errors": 25,
+    "families": {
+      "code_config": {
+        "cells": 20,
+        "mean_score": 0.4766666666666667,
+        "success_rate": 0.4
+      },
+      "code_ledger": {
+        "cells": 20,
+        "mean_score": 0.6883333333333334,
+        "success_rate": 0.65
+      },
+      "code_versions": {
+        "cells": 20,
+        "mean_score": 0.55,
+        "success_rate": 0.55
+      }
+    },
+    "input_tokens": 836756,
+    "mean_score": 0.5716666666666667,
+    "mean_wall_s": 30.918757466657553,
+    "output_tokens": 195550,
+    "p95_wall_s": 40.2283679000102,
+    "success_rate": 0.5333333333333333,
+    "successes": 32,
+    "tasks": 60,
+    "tokens_per_success": 32259.5625
+  },
+  "single_self_review": {
+    "calls": 201,
+    "cells": 60,
+    "ci95_hoeffding_conservative": [
+      0.608003181569251,
+      0.9586634850974156
+    ],
+    "ci95_task_cluster": [
+      0.6833333333333333,
+      0.8833333333333333
+    ],
+    "errors": 11,
+    "families": {
+      "code_config": {
+        "cells": 20,
+        "mean_score": 0.63,
+        "success_rate": 0.55
+      },
+      "code_ledger": {
+        "cells": 20,
+        "mean_score": 0.8,
+        "success_rate": 0.8
+      },
+      "code_versions": {
+        "cells": 20,
+        "mean_score": 1.0,
+        "success_rate": 1
+      }
+    },
+    "input_tokens": 858464,
+    "mean_score": 0.81,
+    "mean_wall_s": 25.9902321533397,
+    "output_tokens": 155309,
+    "p95_wall_s": 40.36875510006212,
+    "success_rate": 0.7833333333333333,
+    "successes": 47,
+    "tasks": 60,
+    "tokens_per_success": 21569.63829787234
+  },
+  "single_tool": {
+    "calls": 161,
+    "cells": 60,
+    "ci95_hoeffding_conservative": [
+      0.39133651490258436,
+      0.7419968184307489
+    ],
+    "ci95_task_cluster": [
+      0.43333333333333335,
+      0.7
+    ],
+    "errors": 23,
+    "families": {
+      "code_config": {
+        "cells": 20,
+        "mean_score": 0.7216666666666667,
+        "success_rate": 0.65
+      },
+      "code_ledger": {
+        "cells": 20,
+        "mean_score": 0.24,
+        "success_rate": 0.2
+      },
+      "code_versions": {
+        "cells": 20,
+        "mean_score": 0.85,
+        "success_rate": 0.85
+      }
+    },
+    "input_tokens": 511313,
+    "mean_score": 0.6038888888888889,
+    "mean_wall_s": 16.751396143327778,
+    "output_tokens": 119526,
+    "p95_wall_s": 35.10755319998134,
+    "success_rate": 0.5666666666666667,
+    "successes": 34,
+    "tasks": 60,
+    "tokens_per_success": 18554.08823529412
+  }
+}

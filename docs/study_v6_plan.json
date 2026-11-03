@@ -1,0 +1,12 @@
+{
+  "study_id": "v6-public-reproduction-202611039901",
+  "model": "deepseek-v4-pro",
+  "thinking": "disabled",
+  "repeats": 1,
+  "workers": 4,
+  "max_calls": 5,
+  "max_output_tokens": 12000,
+  "max_input_tokens": 32000,
+  "dev": {"seed": 202611039901, "per_family": 3},
+  "holdout": {"seed": 202611039902, "per_family": 20}
+}

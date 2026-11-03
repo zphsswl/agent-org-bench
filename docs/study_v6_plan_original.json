@@ -1,0 +1,18 @@
+{
+  "study_id": "v6r1-20261103-infrastructure-recovery",
+  "model": "deepseek-v4-pro",
+  "thinking": "disabled",
+  "repeats": 1,
+  "workers": 4,
+  "max_calls": 5,
+  "max_output_tokens": 12000,
+  "max_input_tokens": 32000,
+  "dev": {
+    "seed": 2026110306,
+    "per_family": 3
+  },
+  "holdout": {
+    "seed": 2026110308,
+    "per_family": 20
+  }
+}
