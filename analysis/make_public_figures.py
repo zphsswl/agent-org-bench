@@ -1,4 +1,4 @@
-"""Render three figures from released v6 metrics and archived statistics only.
+"""Render figures from released main-study metrics and archived statistics only.
 
 No model/API requests, private cases, candidate answers or traces are used.
 Statistics are read from decision.json, not newly tested. Run from a repository
@@ -32,7 +32,7 @@ FAMILY_LABELS = {"code_versions": "Version conflict\nmerge", "code_ledger": "Sta
 
 
 def read_public(repository):
-    directory = repository / "results/v6"
+    directory = repository / "results/main"
     rows = [json.loads(line) for line in (directory / "holdout_cells.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
     decision = json.loads((directory / "decision.json").read_text(encoding="utf-8"))
     task_family, seen = {}, set()
@@ -77,16 +77,16 @@ def make_figures(repository):
     from matplotlib.ticker import PercentFormatter
 
     repository = Path(repository).resolve()
-    _, decision, counts, cells = read_public(repository)
-    output = repository / "results/v6"
-    palette = {arm: plt.get_cmap("tab10")(DEV_ORDER.index(arm)) for arm in ARMS}
+    confirmation_rows, decision, counts, cells = read_public(repository)
+    output = repository / "results/main"
+    palette = {arm: plt.get_cmap("tab10")(DEV_ORDER.index(arm)) for arm in DEV_ORDER}
     style = {"font.family": "DejaVu Sans", "font.size": 11, "axes.titlesize": 17,
              "axes.labelsize": 12, "axes.spines.top": False, "axes.spines.right": False,
              "figure.facecolor": "white", "savefig.facecolor": "white"}
 
     def save(fig, name):
         path = output / name
-        fig.savefig(path, dpi=240, bbox_inches="tight", metadata={"Description": "Released v6r1 metrics; no private data or new statistical tests."})
+        fig.savefig(path, dpi=240, bbox_inches="tight", metadata={"Description": "Released confirmation metrics; no private data or new statistical tests."})
         plt.close(fig)
         return {"file": path.relative_to(repository).as_posix(), "bytes": path.stat().st_size}
 
@@ -193,7 +193,42 @@ def make_figures(repository):
                  "Values below zero favor the control. No new tests or subgroup claims are introduced.",
                  fontsize=9.2, color="#555555", va="bottom")
         generated.append(save(fig, "paired_quality_deltas.png"))
-    return {"source": "released v6r1 confirmation metrics and archived decision", "new_statistical_tests": False,
+
+        development_rows = [json.loads(line) for line in (output / "dev_cells.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
+        development_tasks = {row["task_id"] for row in development_rows}
+        grid = {(row["task_id"], row["architecture"], row["repeat"]) for row in development_rows}
+        if (len(development_rows) != 81 or len(development_tasks) != 9
+                or grid != {(task, arm, 0) for task in development_tasks for arm in DEV_ORDER}):
+            raise ValueError("Expected the released nine-task, nine-policy development grid")
+        fig, axes = plt.subplots(1, 2, figsize=(15, 5.6))
+        for ax, rows, order, title in (
+                (axes[0], development_rows, DEV_ORDER, "Development: 9 tasks per policy"),
+                (axes[1], confirmation_rows, ARMS, "Confirmation: 60 tasks per policy")):
+            for arm in order:
+                group = [row for row in rows if row["architecture"] == arm]
+                x = sum(row["input_tokens"] + row["output_tokens"] for row in group) / len(group)
+                y = sum(row["evaluation"]["success"] for row in group) / len(group)
+                primary = arm == "single_self_review"
+                ax.scatter(x, y, s=100 if primary else 62, marker="D" if primary else "o", color=palette[arm], zorder=3)
+                offset = (-105, 11) if arm in ("adaptive_tools", "hierarchy_tool") else (9, -22) if arm == "best_of_three" else (9, 10)
+                if arm == "hierarchy_tool":
+                    offset = (-35, 14)
+                if primary:
+                    offset = (9, -22) if ax is axes[0] else (-112, 12)
+                ax.annotate(arm, (x, y), xytext=offset, textcoords="offset points", fontsize=8.3)
+            ax.set_title(title, loc="left", fontsize=13)
+            ax.set_xlabel("Observed mean input + output tokens / task", fontsize=10)
+            ax.set_ylabel("Successful delivery rate", fontsize=10)
+            ax.set_ylim(-.03, 1.1)
+            ax.margins(x=.19)
+            ax.grid(color="#d8dde3", alpha=.65)
+            ax.set_axisbelow(True)
+            ax.yaxis.set_major_formatter(PercentFormatter(1))
+        fig.suptitle("Observed quality and resource use", x=.07, ha="left", fontsize=18, fontweight="semibold")
+        fig.text(.07, .02, "Descriptive, separate development and confirmation cohorts. Equal ceilings do not imply equal actual compute.", fontsize=9, color="#555555")
+        fig.subplots_adjust(left=.07, right=.985, bottom=.18, top=.83, wspace=.27)
+        generated.append(save(fig, "quality_tokens.png"))
+    return {"source": "released confirmation metrics and archived decision", "new_statistical_tests": False,
             "tasks_per_strategy": 60, "successes": counts, "figures": generated}
 
 

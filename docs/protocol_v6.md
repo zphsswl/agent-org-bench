@@ -1,10 +1,10 @@
-# v6 public reproduction protocol
+# Public reproduction protocol
 
 This is a **separate public reproduction configuration**, with dedicated demonstration seeds. It is not a copy of the active private study dataset and does not replace the original registered protocol or results. Both seeds below are public, so generated cases are unsuitable as future blinded holdouts.
 
-Its protocol hash is intentionally different from the original registered experiment's hash. Results must retain the hash of the protocol actually used; never relabel original results with this template hash. After the original study is retired, an approved original registration may be archived separately as `protocol_v6_original.md` with its own metadata.
+Its protocol hash is intentionally different from the original registered experiment's hash. Results must retain the hash of the protocol actually used; never relabel original results with this template hash. The retired original registration is preserved separately in the [registration archive](../archive/registrations/README.md), with its original metadata.
 
-The corresponding public machine plan is [study_v6_plan.json](study_v6_plan.json). It locks the model, thinking setting, repetitions, concurrency, per-task limits and each stage's seed/task count. It is also different from the active/original study plan. Changing those values requires a new study identity, plan/protocol and output directories; do not overwrite frozen selection or run records.
+The corresponding public machine plan is [public machine plan](study_v6_plan.json). It locks the model, thinking setting, repetitions, concurrency, per-task limits and each stage's seed/task count. It is also different from the active/original study plan. Changing those values requires a new study identity, plan/protocol and output directories; do not overwrite frozen selection or run records.
 
 ## Question and design
 
@@ -43,7 +43,7 @@ Candidate programs run only through the immutable-input, restricted AST executor
 - Reproduction confirmation: seed **202611039902**, split `holdout`, 20 tasks per family, 60 total tasks, one repetition and five arms: **300 task runs**.
 - Confirmation arms: frozen candidate plus `single_tool`, `single_self_review`, `hierarchy_tool`, `best_of_three`.
 
-The v6 sampler independently derives each task seed from its root seed/split/family/index, rather than advancing one shared finite rule-cycle phase. Rule support is still finite and repeated semantic combinations are possible; payloads and visibility streams remain separate. Same-template new seeds do not establish real-world distribution shift.
+The task sampler independently derives each task seed from its root seed/split/family/index, rather than advancing one shared finite rule-cycle phase. Rule support is still finite and repeated semantic combinations are possible; payloads and visibility streams remain separate. Same-template new seeds do not establish real-world distribution shift.
 
 The runner defaults to `--plan docs/study_v6_plan.json`. Omitted `--seed` and `--per-family` are resolved from the selected stage. Explicit values must match the plan; arbitrary seed/count overrides are rejected. Model and resource arguments must also match the frozen plan. Manifests retain the plan hash, source/protocol hashes, order-preserving task hash and a credential-free provider endpoint identity.
 
@@ -55,7 +55,7 @@ The three secondary comparisons are against `single_tool`, `hierarchy_tool` and 
 
 Tasks, not private cases or repeated API attempts, are the independent units. Per-family slices are exploratory; report paired counts and sample sizes without selecting favorable subgroups as new confirmation claims.
 
-Token ratios, latency and observed Pareto points are **descriptive in v6**; this protocol has no efficiency-confirmation endpoint. Report input/output/cache usage, calls, public-pass/hidden-fail outcomes, audits and repairs. Unknown resource measurements remain unknown.
+Token ratios, latency and observed Pareto points are **descriptive in this study**; this protocol has no efficiency-confirmation endpoint. Report input/output/cache usage, calls, public-pass/hidden-fail outcomes, audits and repairs. Unknown resource measurements remain unknown.
 
 The nominal alpha allocation is 0.025+0.025. Bootstrap intervals have approximate coverage, not finite-sample exact guarantees. Completeness, unique expected cells, clean infrastructure, known usage and actual budget compliance are required for confirmation.
 

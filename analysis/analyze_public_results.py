@@ -1,4 +1,4 @@
-"""Recompute published v6 quality statistics from metrics only; no API calls.
+"""Recompute published main-study quality statistics from metrics only; no API calls.
 
 This verifies arithmetic on released outcomes, not the original grading or
 archive validity. Those depend on the archived protocol and validation receipt.
@@ -41,6 +41,6 @@ def analyze(directory):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--results", type=Path, default=ROOT / "results/v6")
+    parser.add_argument("--results", type=Path, default=ROOT / "results/main")
     args = parser.parse_args()
     print(json.dumps(analyze(args.results), indent=2))

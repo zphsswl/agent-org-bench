@@ -28,7 +28,7 @@ Generated Python is interpreted in a restricted AST language, with bounded execu
 
 Rules depend on seed, split, family and index. The current generator uses finite rule cycles: 96 version combinations, 64 ledger combinations and 128 configuration combinations. Seeds change the rule phase and payloads; a new seed is not an unrestricted new task family.
 
-The v5 audited development/confirmation rule sets did differ. Generation order did not alter regenerated tasks, and isolated candidate executions did not share module state. These checks do not replace new templates, real repositories or out-of-distribution evaluation.
+Task generation and isolated candidate execution are deterministic under their declared inputs. These properties do not replace new templates, real repositories or out-of-distribution evaluation. Earlier generator audits belong to the separate [research archive](../archive/preliminary-study/README.md).
 
 ## Decisions
 

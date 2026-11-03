@@ -1,89 +1,81 @@
 # Agent Org Bench
 
-**Latest v6r1 confirmation:** the new router solved **39/60 (65.0%)**, versus **47/60 (78.3%)** for single-agent self-review. None of the four preregistered superiority comparisons passed. Negative results remain part of this comparative workbench. [Latest results](docs/results-v6.md).
+**Which collaboration mechanisms help which tasks, and are their gains worth the extra work?**
 
-A research workbench for building and comparing agent coordination mechanisms under shared tools and declared resource limits.
+A reproducible comparison of single-agent solving, self-review, hierarchy, independent candidate search, audit and routing under one model, shared tools and declared resource limits.
 
-[简体中文](README.zh-CN.md) · [Architectures and flow diagrams](docs/architecture_catalog.md) · [Concrete task examples](docs/task_examples.md) · [Conclusions](docs/conclusions.md) · [Reproduction](docs/reproducibility.md) · [Known limitations](docs/known_limitations.md)
+**Independent confirmation:** the router solved **39/60 (65.0%)**, versus **47/60 (78.3%)** for single-agent self-review. None of the router's four preregistered superiority comparisons passed. Self-review had the highest observed success rate; universal optimality is not established.
 
-The project asks **which coordination mechanisms help which tasks**, rather than declaring one universally best organization. Implementations are simplified mechanism baselines, not official reproductions of DSH, AutoGen, or other frameworks.
+[简体中文](README.zh-CN.md) · [Architecture diagrams](docs/architecture_catalog.md) · [Tasks and examples](docs/task_examples.md) · [Full results](docs/results.md) · [Conclusions](docs/conclusions.md)
 
-## v6 results
+## Study design
 
-Completed 81 development and 300 fresh-confirmation task runs; frozen candidate: `adaptive_tools`. Development self-review solved 9/9 and the candidate 8/9; selection was not overall first place.
+1. Development: nine tasks × nine policies, giving 81 task runs.
+2. Select and freeze one of four non-control candidates. The router solved 8/9 development tasks; self-review solved 9/9. Candidate selection was not an overall victory.
+3. Confirmation: 60 fresh tasks × five arms, giving 300 paired task runs, using `deepseek-v4-pro` in non-thinking mode.
+4. Shared per-task ceilings cover calls and input/output resources. Actual usage and latency are recorded separately; equal ceilings do not mean equal compute.
 
-Primary vs single_self_review: superiority not confirmed. Secondary declarations separately: `single_tool`=not confirmed; `hierarchy_tool`=not confirmed; `best_of_three`=not confirmed.
+[Methods](docs/methods.md) · [Study status](docs/study-status.md) · [Reproduction](docs/reproducibility.md)
 
-Non-confirmation is not equivalence or noninferiority; token ratios are descriptive.
+## Architectures and controls
 
-[Bilingual results](docs/results-v6.md) · [Study status](docs/study-status.md)
+| Role | Policy | Mechanism |
+|---|---|---|
+| Primary quality control | Single-agent self-review | Retained visible history; generation, review and revision |
+| Secondary control | Single + tools | Actual public tests and failure-triggered repair |
+| Secondary control | Hierarchy | Router, two isolated reports, integration and optional repair |
+| Secondary control | Best-of-three | Three complete independent proposals, selected by public tests |
+| Selected candidate | Fixed router | Public-task features choose a tool single agent or audit team |
 
-![Observed success on the 60-task confirmation](results/v6/confirmation_success.png)
+Development also tested one-shot solving, two-proposal bazaar, independent audit and evidence-gated escalation. See the [nine mechanism cards](docs/architecture_catalog.md) for context access, allocation, acceptance and stopping. These are simplified mechanisms, not official reproductions of DSH, AutoGen or other frameworks.
 
-![Exploratory task-family comparison, 20 tasks per cell](results/v6/task_family_heatmap.png)
+## Evaluation tasks
 
-The [paired-difference plot](results/v6/paired_quality_deltas.png) shows the four candidate comparisons and their original marginal 95% intervals. Family point estimates are exploratory; they are not confirmed task-specific winners.
+The confirmation contains 20 tasks in each synthetic repair family:
 
-## Historical v5 evidence (separate cohort)
+- **Version merging:** resolve conflicts under semantic precedence rules.
+- **Stateful ledger:** process ordered events with idempotency, freezing and reversal constraints.
+- **Conditional configuration:** implement dependencies, conditions, patch order and merge rules.
 
-The completed v5 confirmation used one model, three families of generated code-repair tasks, and 90 independent tasks per strategy:
+Each task supplies a wrong starter, complete rules and three public input/output examples. Solvers receive only public information and actual public execution feedback. Final scoring uses 30 hidden cases and input-immutability checks. Success requires completion within the declared policy/resources and all terminal checks, rather than public-example success alone.
 
-| Strategy | Tasks solved | Success rate |
-| --- | ---: | ---: |
-| Public-feature router (`adaptive_tools`) | 66/90 | 73.33% |
-| Tool single agent (`single_tool`) | 44/90 | 48.89% |
-| Simplified supervisor–worker (`hierarchy_tool`) | 41/90 | 45.56% |
+[Concrete examples](docs/task_examples.md) · [Public specifications for all 60 confirmation tasks](datasets/README.md)
 
-Both preregistered paired quality comparisons passed. **The preregistered token-efficiency test did not pass.** The observed token ratio against the single agent was 0.936; its 95% paired interval was approximately [0.801, 1.100]. See [v5 results and limitations](docs/results-v5.md).
+## Results
 
-These findings do not establish a pure topology effect: extra review, prompts, context boundaries, and allocation rules differ. The router score is constant within each task template, and two routed task families execute the same implementation as the single-agent baseline. V6 added call/stage-matched self-review and did not confirm an advantage for the new strategy.
+| Policy | Tasks solved | Success rate | Mean input + output tokens/task |
+|---|---:|---:|---:|
+| Self-review | 47/60 | 78.3% | 16,896 |
+| Fixed router | 39/60 | 65.0% | 12,323 |
+| Best-of-three | 38/60 | 63.3% | 13,047 |
+| Single + tools | 34/60 | 56.7% | 10,514 |
+| Hierarchy | 32/60 | 53.3% | 17,205 |
 
-## What was evaluated
+![Independent confirmation success](results/main/confirmation_success.png)
 
-Nine executable policies vary context access, scheduling, review, selection and stopping. Twelve historical named configurations are separately documented; they do not form a common 21-arm leaderboard. See the [individual architecture cards and diagrams](docs/architecture_catalog.md).
+![Exploratory family comparison, 20 tasks per cell](results/main/task_family_heatmap.png)
 
-Controls are one-shot solving (development only), public-failure repair by one solver, same-context self-review (primary), router–workers hierarchy and three independent complete candidates selected by public tests. New candidates are two-branch bazaar, independent audit, fixed routing and evidence gating. Candidate selection among four treatments is not a claim of beating the controls.
+The router minus self-review difference was −13.3 percentage points, with a 95% paired interval of [−28.3, +1.7] and p=0.115. Its observed token use was about 27.1% lower, alongside lower observed quality. This does not establish equal-quality savings, equivalence or noninferiority.
 
-Three synthetic repair families cover version/conflict merging, a stateful ledger with event invariants, and conditional/dependency-driven configuration. Every task includes a deliberately wrong starter, complete rules and three public examples. Final scoring uses 30 hidden cases plus input-immutability checks. Public passes alone do not establish correctness.
+[Full statistics and resources](docs/results.md) · [Paired differences and intervals](results/main/paired_quality_deltas.png) · [Interpretation](docs/conclusions.md)
 
-Read the [concrete input/output examples](docs/task_examples.md) or inspect [all retired public task specifications](datasets/README.md). These are restricted-AST mechanism experiments, not a completed SWE-bench or official-framework comparison.
+## Reproduce
 
-## Offline setup
-
-Python **3.11 or newer**. The core uses the standard library.
+Python ≥3.11; the core uses the standard library. These commands are offline:
 
 ```bash
 python -m unittest discover -s tests
-python -m orgbench.study_v6 --help
+python analysis/analyze_public_results.py
+# Optional plotting dependency: python -m pip install -e ".[report]"
+python analysis/make_public_figures.py
 ```
 
-The test suite is offline. CI does not run model experiments or receive provider credentials. Optional report plots use `matplotlib`; optional native-pilot tooling uses `cryptography`, neither required by the core test workflow.
+The [reproduction guide](docs/reproducibility.md) distinguishes new model runs, the public reproduction plan and original registrations. Internal identifiers remain in code and immutable audit records for traceability.
 
-```bash
-python -m pip install -e ".[report]"
-# Only if working with the separate optional native-pilot tooling:
-python -m pip install -e ".[native]"
-```
+## Conclusions and next question
 
-Model execution is explicit. Follow the CLI help and [reproduction guide](docs/reproducibility.md); a local test run or package import must not silently start a provider request.
+More roles, calls or routing do not automatically improve delivery. Strong single-agent self-review is a necessary control here. The next question is **when an additional review is worth its cost, what observable evidence should trigger it, and when to stop**. Shared-draft review is a proposed follow-up, not a completed model experiment.
 
-## What is measured
+This study covers one model, three finite synthetic families and a restricted AST executor. It does not establish outcomes for all multi-agent systems or real repositories. [Known limitations](docs/known_limitations.md) · [Data policy](docs/data-policy.md)
 
-- Hidden-test task success and partial correctness, separately from public-example success.
-- Actual provider input/output tokens, cached input, logical calls and HTTP attempts when observable.
-- Infrastructure failures, invalid outputs, budget stops and execution limits.
-- Quality–resource trade-offs; observed Pareto points are not automatically confirmed improvements.
-
-Generated code runs in a bounded AST interpreter inside a resource-limited process. This supports a restricted Python subset, not arbitrary production Python or a general hostile-code sandbox.
-
-## Reproducibility and data
-
-Public demonstrations use a dedicated reproduction seed, **202611039901**, not the active study holdout. The release excludes raw runs, provider logs, active private cases, credentials, account information and native-pilot encrypted material or keys. Different generator seeds do not imply a new real-world task distribution.
-
-The [public machine plan](docs/study_v6_plan.json) fixes development/confirmation seeds, sample sizes and runtime limits. CLI mismatches are rejected; a different experiment requires a new plan and study identity. The public protocol/plan hashes differ from the original registration, which is archived separately only after study retirement.
-
-Native-agent observations are recorded separately from API experiments. Unobservable native tokens or provider charges remain unknown; they are never filled with zero or merged into API efficiency comparisons.
-
-## License
-
-The author has not selected a project license. [LICENSE-NOTICE.md](LICENSE-NOTICE.md) is a status notice, not a license grant. No MIT, Apache or other license is implied.
+Earlier explorations live in the [research archive](archive/README.md) and do not enter this study's ranking. A project license [has not yet been selected](LICENSE-NOTICE.md).

@@ -1,15 +1,13 @@
-# Retired public benchmark tasks / 已退休的公开任务
+# Public confirmation tasks / 公开确认任务
 
-These are the exact public specifications, starter programs and examples supplied in the completed studies, projected to public fields only:
+[60 confirmation tasks](confirmation/tasks.public.json) contain the exact public specifications, starter programs and examples supplied in the main study. [Three separate demonstration tasks](../examples/public_demo_tasks.json) illustrate the format.
 
-- [v5 confirmation: 90 tasks](v5/tasks.public.json)
-- [v6r1 confirmation: 60 tasks](v6r1/tasks.public.json)
-- [Three independent demonstration tasks](../examples/public_demo_tasks.json)
+Each task includes its complete `public.spec`, semantic `public.rules`, deliberately wrong `public.starter_source`, three public examples and the permitted Python subset. `prompt` is the original public prompt. Mapping insertion order is preserved because patch order can affect configuration semantics.
 
-Each task contains its complete `public.spec`, fixed semantic `public.rules`, deliberately incorrect `public.starter_source`, three public examples and the permitted Python subset. `prompt` is the original model-facing public prompt. Mapping insertion order is preserved because configuration patches can depend on it.
+Hidden cases, final model solutions and provider logs are not included. This public projection has its own hash; it is not the complete public-plus-private task-suite hash in the original manifest.
 
-Only public input and expected-output examples are included. Hidden case payloads, final model solutions, provider logs and account records are excluded. The public field projection has its own file hash; it is not the full public-plus-private suite hash from the original manifest.
+这些任务已退休，用于复核现有结果，不能再次作为新策略的独立盲测。生成器和公开种子可以重建旧参考案例；未来确认必须另立数据与协议。新种子仍来自三个有限模板，不代表真实仓库的分布外验证。
 
-The generator and retired protocol seeds permit reconstructing old reference cases. All released tasks are permanently retired from future blind confirmation. New trials require new data and a separately frozen protocol. New seeds from the same three finite templates are not real-world out-of-distribution evaluation.
+[任务说明与输入／输出示例](../docs/task_examples.md) · [数据政策](../docs/data-policy.md)
 
-具体任务解释见[任务卡与示例](../docs/task_examples.md)。这些数据用于复查已完成研究，不能再作为V7或新策略的最终盲测。
+前期探索数据单独保存在[归档](../archive/preliminary-study/README.md)，不与这60题合并。

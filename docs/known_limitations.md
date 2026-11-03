@@ -1,8 +1,8 @@
 # Known limitations / 已知限制
 
-This initial release preserves the measured implementation. Its `orgbench/*.py` source hash is `cf1437bfcd01b5fab047bb54dc46dfdb69bad76fac0475fb1523407adb4de47f`; the limitations below do not silently change that implementation or its archived results.
+This release preserves the measured implementation. Its `orgbench/*.py` source hash is `cf1437bfcd01b5fab047bb54dc46dfdb69bad76fac0475fb1523407adb4de47f`; the limitations below do not silently change that implementation or its archived results.
 
-本次首次发布保留已经测量的源码和结果。以下限制不是新发现的架构胜出证据，也不通过修改冻结源码来追改旧实验。
+本次发布保留已经测量的源码和结果。以下限制不是新发现的架构胜出证据，也不通过修改冻结源码来追改旧实验。
 
 ## Provider usage contract / 供应商用量契约
 
@@ -10,9 +10,9 @@ The frozen client is intended for the tested Anthropic-compatible adapter. It **
 
 冻结客户端不会对所有缺失或格式错误的usage字段拒绝计量：缺失/非法Token值可能被规范化为0，然后仍返回成功。不要将其解释为“未知用量被可靠保留为未知”，也不要未经验证就把新供应商适配器用于资源优势结论。
 
-For the archived successful cohorts, a separate read-only inspection by the release owner found positive integer **parsed result** input/output counts for all v5 development 253 calls, v5 confirmation 937 calls, v6 development 237 calls and v6r1 confirmation 1,031 calls. The original raw usage objects were not retained, so this inspection cannot retrospectively prove the original type/presence of every raw subfield. This is an audit boundary, not evidence that an observed cohort had missing usage. Future versions should validate required usage fields strictly or mark usage unknown before new measurements.
+For the main study, a separate read-only inspection by the release owner found positive integer **parsed result** input/output counts for all 237 development calls and 1,031 confirmation calls. The original raw usage objects were not retained, so this inspection cannot retrospectively prove the original type/presence of every raw subfield. This is an audit boundary, not evidence that an observed cohort had missing usage. Future versions should validate required usage fields strictly or mark usage unknown before new measurements.
 
-发布负责人对有效批次的本地已解析记录做了单独只读检查：v5开发253次、v5确认937次、v6开发237次、v6r1确认1,031次，input/output结果均为正整数。原始raw usage对象未保存，因此不能据此追溯证明每个原生子字段都存在且本来就是整数。后续版本应在新实验前加入严格字段校验或未知计量标记；这份发布不伪称旧客户端已经做到。
+发布负责人对主研究有效批次的本地已解析记录做了单独只读检查：开发237次、确认1,031次，input/output结果均为正整数。原始raw usage对象未保存，因此不能据此追溯证明每个原生子字段都存在且本来就是整数。后续版本应在新实验前加入严格字段校验或未知计量标记；这份发布不伪称旧客户端已经做到。
 
 ## One process per output directory / 每个输出目录只允许一个进程
 
@@ -38,8 +38,8 @@ API提示与隐藏判分的分离，不等于可以把整个研究目录直接�
 
 - The measured policies use one hosted model alias and three finite synthetic code-task families in a restricted AST language. Official DSH/AutoGen reproductions, real-repository performance, long-lived asynchronous workloads and cross-model transfer are not established here.
 - Task seeds reproduce generated tasks, not provider sampling or immutable model weights. The source/archive hashes do not pin hosted model internals.
-- Nine development tasks are exploratory; 20 tasks per confirmation family do not establish task-specific winners. The v5 and v6r1 cohorts, and the separate native pilot, are not pooled.
-- V6r1 confirmed none of the new router's four preregistered superiority comparisons. Non-significance is not equivalence/noninferiority. Its token ratios are descriptive, not equal-quality efficiency claims.
+- Nine development tasks are exploratory; 20 tasks per confirmation family do not establish task-specific winners. The main study, earlier studies and the separate native pilot are not pooled.
+- The main study confirmed none of the new router's four preregistered superiority comparisons. Non-significance is not equivalence/noninferiority. Its token ratios are descriptive, not equal-quality efficiency claims.
 - [analyze_public_results.py](../analysis/analyze_public_results.py) replays arithmetic on released outcomes. It does not independently regrade original candidate programs or prove the original private grader's validity.
 
 以上边界必须与正结果和负结果一起保留，不能把受限合成任务上的观察扩大为通用组织最优性。

@@ -1,4 +1,4 @@
-# v6 results / v6结果
+# Main study results / 当前研究结果
 
 最新结论：候选没有通过任何一项预注册质量优势比较。单体自检的成功率点估计最高，不能由此称其普遍最优或已在所有任务上显著优于其他策略。
 
@@ -26,6 +26,8 @@ Development `single_self_review` solved 9/9; the selected candidate solved 8/9. 
 
 ## Confirmation / 确认
 
+The main confirmation contains 60 tasks evaluated across five arms. / 当前完整确认包含60道题，每题在五组策略下评估。
+
 | Strategy / 策略 | Solved / 全对 | Rate / 成功率 | Calls / 调用 | Input tokens | Output tokens | Total tokens | Mean / P95 seconds |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | `single_tool` | 34/60 | 56.7% | 161 | 511,313 | 119,526 | 630,839 | 16.7514 / 35.1076 |
@@ -33,6 +35,8 @@ Development `single_self_review` solved 9/9; the selected candidate solved 8/9. 
 | `hierarchy_tool` | 32/60 | 53.3% | 270 | 836,756 | 195,550 | 1,032,306 | 30.9188 / 40.2284 |
 | `best_of_three` | 38/60 | 63.3% | 223 | 604,175 | 178,643 | 782,818 | 25.8779 / 33.4545 |
 | `adaptive_tools` | 39/60 | 65.0% | 176 | 592,714 | 146,636 | 739,350 | 20.9036 / 42.7307 |
+
+![Confirmation task success](../results/main/confirmation_success.png)
 
 ## Predeclared quality comparisons / 预注册质量比较
 
@@ -45,7 +49,9 @@ Primary and secondary declarations are separate. Not confirming superiority is n
 | secondary | `hierarchy_tool` | 60 | 11.7% | [-5.0%, 28.3%] | 0.247789 | 0.743366 | not confirmed / 未确认 |
 | secondary | `best_of_three` | 60 | 1.7% | [-13.3%, 16.7%] | 1 | 1 | not confirmed / 未确认 |
 
-Token ratios and intervals are descriptive; v6 has no efficiency-confirmation gate. / Token比和区间只描述，本轮没有效率确认门。
+![Archived paired quality differences](../results/main/paired_quality_deltas.png)
+
+Token ratios and intervals are descriptive; the current study has no efficiency-confirmation gate. / Token比和区间只描述，当前研究没有效率确认门。
 
 | Control | Candidate/control total-token ratio | 95% paired interval |
 |---|---:|---|
@@ -55,6 +61,8 @@ Token ratios and intervals are descriptive; v6 has no efficiency-confirmation ga
 | `best_of_three` | 0.944472 | [0.798182, 1.10003] |
 
 ## Task families and failures (exploratory) / 分族与失败（探索性）
+
+![Exploratory task-family success matrix](../results/main/task_family_heatmap.png)
 
 | Family / 任务族 | Arm / 策略 | n | Solved | Calls | Total tokens | Public-pass hidden-fail | Budget stops |
 |---|---|---:|---:|---:|---:|---:|---:|
@@ -76,12 +84,14 @@ Token ratios and intervals are descriptive; v6 has no efficiency-confirmation ga
 
 `input_budget_exhausted` inside declared caps is a legitimate failed task, not automatically an infrastructure error or whole-study invalidation. Actual overruns are separately guarded. All failed/null results remain visible. / 声明上限内的input_budget_exhausted是合法性能失败，不自动当基础设施错误或令整轮无效；真实超限另有守卫，失败及负结果全部保留。
 
-The model, finite generated task population, restricted AST, prompts and stage allocations limit generalization. Family analyses are exploratory. v5 and the native pilot are separate cohorts; no pooling or cross-backend efficiency comparison is made. / 结论限于该模型、有限生成题、受限AST及提示/额度；分族只探索，v5和原生pilot分开，不拼样本或同比效率。
+The model, finite generated task population, restricted AST, prompts and stage allocations limit generalization. Family analyses are exploratory. Preliminary studies and other-backend pilots are archived separately; no pooling or cross-backend efficiency comparison is made. / 结论限于该模型、有限生成题、受限AST及提示/额度；分族只探索，预备研究与其他后端试验另行归档，不拼样本或同比效率。
 
-Machine-readable sanitized results: [v6 state](../results/v6/state.json), [decision](../results/v6/decision.json), [development cells](../results/v6/dev_cells.jsonl), [confirmation cells](../results/v6/holdout_cells.jsonl). Original registered materials: [protocol](protocol_v6_original.md), [plan](study_v6_plan_original.json).
+Machine-readable sanitized results: [main study state](../results/main/state.json), [decision](../results/main/decision.json), [development cells](../results/main/dev_cells.jsonl), [confirmation cells](../results/main/holdout_cells.jsonl). Original registered materials: [protocol](../archive/registrations/protocol_v6_original.md), [plan](../archive/registrations/study_v6_plan_original.json).
 
 
-This is the v6r1 infrastructure recovery: the original 49-cell confirmation was invalidated for unknown transport usage and is excluded. Development data, candidate, code, model, controls and hypotheses were unchanged. 本页为v6r1独立确认；原49次失效记录未混入，开发、候选、代码、模型、对照和假设均保持不变。
+The original interrupted cohort stopped after 49 of 300 planned cells because of transport failures and unknown usage. It was invalidated and excluded. The replacement confirmation used fresh tasks while retaining the development data, candidate, code, model, controls and hypotheses. The main 300-cell confirmation was complete, and its recovery lineage and independent statistical recomputation were checked before release.
+
+原确认批次在计划300次中的49次后因传输失败与用量未知而中断并失效，未混入当前研究。替代确认使用新任务，保留开发数据、候选、代码、模型、对照和假设。当前300次确认完整，发布前已核验恢复继承链及独立统计复算。
 
 ## Interpretation and next experiments / 解读与下一阶段
 
@@ -105,4 +115,6 @@ Next, prioritize fresh real-repository/tool tasks, context-memory ablations and 
 
 Offline metric replay / 不调用API复算指标：`python analysis/analyze_public_results.py`。它复算公开指标的统计，不声称重新验证原始程序判分。
 
-![Observed task quality and token use](../results/v6/quality_tokens.png)
+![Observed task quality and token use](../results/main/quality_tokens.png)
+
+Earlier experiments are preserved in the [preliminary-study archive](../archive/preliminary-study/README.md) for historical review and do not enter the main confirmation. / 早期实验保留在[预备研究归档](../archive/preliminary-study/README.md)，供历史核查，不混入当前确认。

@@ -2,7 +2,7 @@
 
 The benchmark asks for a complete `solve(payload)` implementation that repairs a deliberately wrong starter. The three families are version conflict resolution, an idempotent stateful ledger and conditional configuration resolution. These are generated function-level tasks in a restricted Python subset, not real-repository or SWE-bench tasks.
 
-本页给出每族一道完整公开题目的规格、规则开关，以及一个真实公开输入和预期输出。输入较长时可展开查看。它们来自公开演示种子 **202611039901**，调用 `generate_independent_suite('dev', 1, 202611039901)` 后只保存 `id/family/public` 投影。**没有模型求解或成绩，也不是v5/v6r1的正式成绩题集。**
+本页给出每族一道完整公开题目的规格、规则开关，以及一个真实公开输入和预期输出。输入较长时可展开查看。它们来自公开演示种子 **202611039901**，调用 `generate_independent_suite('dev', 1, 202611039901)` 后只保存 `id/family/public` 投影。**没有模型求解或成绩，也不是正式确认实验的成绩题集。**
 
 机器可读版本：[public_demo_tasks.json](../examples/public_demo_tasks.json)。其中保留每题的全部三个公开例、错误starter和允许语言子集；没有私有案例、任务私有字段或隐藏评分。JSON映射插入顺序保留，不能任意排序配置patch的键后声称题目未变。
 

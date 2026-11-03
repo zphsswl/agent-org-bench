@@ -4,6 +4,9 @@ This command never calls a model, publishes, initializes Git, or copies a run
 directory. v5 results are reconstructed as metrics-only cells. v6 remains pending
 unless an explicit completion flag passes the archived-study validation gate.
 """
+# Legacy research-workspace exporter: emits the original audit layout.
+# Export only to a fresh review directory, not over this curated checkout.
+# archive/path-map.json documents the current reader-facing destination layout.
 from __future__ import annotations
 
 import argparse

@@ -1,6 +1,6 @@
 # Architecture and strategy catalog
 
-An organization is defined here by executable scheduling, information access, artifact selection and stopping rules. A role name alone is not an organization. The current controlled tool study compares nine local implementations; historical mechanisms remain separately labeled.
+An organization is defined here by executable scheduling, information access, artifact selection and stopping rules. A role name alone is not an organization. The controlled tool study compares the nine local implementations documented below.
 
 ## Shared construction
 
@@ -23,7 +23,7 @@ Private cases and terminal scores have no return path to the organization. Only 
 
 ## Current nine mechanisms
 
-| Name | Model stages and information flow | Selection and stop | Role in v6 |
+| Name | Model stages and information flow | Selection and stop | Role in the study |
 |---|---|---|---|
 | `plain_single` | One complete program from the public problem | Check public examples once; stop even on failure | Development-only low-overhead control |
 | `single_tool` | Complete program; later calls see its source and actual public failure | Stop immediately on public pass; otherwise bounded repair | Strong single-agent control |
@@ -47,7 +47,7 @@ Every model role receives the same applicable public task specification and uses
 
 The shared per-cell ceilings are five logical model calls, 12,000 output tokens and a 32,000-input-token conservative preflight/observed-usage guard. Percentage allocations below are stage ceilings; unused allowance is released. They do not guarantee equal actual cost. A run that cannot complete its declared policy is recorded as failed, with best-effort incumbents retained separately.
 
-Evidence labels below distinguish **development only** (nine tasks; exploratory) from **independent confirmation cohort** (60 fresh tasks, same tasks across five arms). A completed confirmation cohort is not itself a positive superiority result. None of the new router's four preregistered superiority comparisons passed. See [results and statistical bounds](results-v6.md) and [conclusions](conclusions.md).
+Evidence labels below distinguish **development only** (nine tasks; exploratory) from **independent confirmation cohort** (60 fresh tasks, same tasks across five arms). A completed confirmation cohort is not itself a positive superiority result. None of the new router's four preregistered superiority comparisons passed. See [results and statistical bounds](results.md) and [conclusions](conclusions.md).
 
 <a id="plain-single"></a>
 
@@ -159,7 +159,7 @@ flowchart LR
 - **Roles/context:** both branches solve the complete task. Neither sees the other candidate or its feedback. There is no open membership, persistent community or reputation market in this prototype.
 - **Stop/acceptance:** the same public ranking and fixed low-branch-ID tie break select the incumbent. Repair only after real public failure and stop upon public pass or resource exhaustion.
 - **Overhead:** two to five calls. Each initial branch has a 40% output ceiling; repairs use actual remaining allowance.
-- **Evidence:** development **7/9**; **development only** in v6. It was not selected for a standalone 60-task confirmation, so no confirmed superiority/inferiority conclusion is available.
+- **Evidence:** development **7/9**; **development only** in this study. It was not selected for a standalone 60-task confirmation, so no confirmed superiority/inferiority conclusion is available.
 
 ### 7. `contract_team` — independent audit / 契约审计团队
 
@@ -216,7 +216,7 @@ flowchart LR
 - **Roles/context:** a solver first uses the public task. The gate reads real public feedback and fixed spec/source features. A called auditor sees public task and current source; the reviser also sees actual public feedback and unverified audit hypotheses.
 - **Stop/acceptance:** a first repair that passes public tests stops immediately. Otherwise audit on persistent failure, or on initial pass with static risk. Risk is fixed at at least six spec conditional markers and either fewer than three AST branches or fewer than 24 nonblank source lines. It is a heuristic, not a correctness/uncertainty oracle.
 - **Overhead:** one to five calls; draft ceiling 60%, first failure repair 20%, audit 10%, revision/remaining repair within the common allowance.
-- **Evidence:** development **5/9**; **development only**, no independent confirmation of the gate's benefit. This earlier heuristic is not evidence for the later V7 conditional-review research direction.
+- **Evidence:** development **5/9**; **development only**, no independent confirmation of the gate's benefit. This heuristic does not establish the value of a future conditional-review policy.
 
 ## Evidence summary / 证据层级汇总
 
@@ -234,99 +234,16 @@ flowchart LR
 
 Concrete specifications, rules and public input/output examples are in [task examples](task_examples.md). The quality/resource plot is descriptive; the task-family matrix is exploratory, not a new set of confirmed subgroup winners.
 
-![Observed quality and token use](../results/v6/quality_tokens.png)
+![Observed quality and token use](../results/main/quality_tokens.png)
 
-![Task-family success matrix](../results/v6/task_family_heatmap.png)
-
-## Historical mechanisms
-
-[architectures.py](../orgbench/architectures.py) and [artifact_org.py](../orgbench/artifact_org.py) contain the following 12 named configurations. Their older tasks included evidence resolution, planning and sequential-state problems; they are not the current three code-repair families. Some earlier studies had floor effects, redundant review controls or invalid infrastructure. A history entry means the implementation exists and was explored under its own version, **not that it has a valid v6r1 confirmation score**.
-
-The nine current configurations plus these 12 historical names give **21 named configurations across versions**. Several share a mechanism; this is neither 21 independent organizational theories nor a unified 21-way ranking.
-
-| Historical name | Information flow | Purpose / important control | Validation status in this release |
-|---|---|---|---|
-| `single` | Public problem → one answer | Original one-solver baseline; see the current [one-shot card](#plain-single) for the analogous shape, not identical task/protocol | Older benchmark only; no v6r1 score |
-| `single_refine` | Same problem/previous answer/public feasibility → repeated revision | Original refinement baseline; differs from current [self-review](#single-self-review) and pass-then-stop policies | Historical baseline; do not reuse its result as the current strong control |
-| `hierarchy` | Router → two exclusive briefs/reports → manager | Original role delegation; current [hierarchy card](#hierarchy-tool) uses code/public-execution rules | Older task/protocol, no v6r1 score |
-| `fixed_dag` | Three fixed isolated perspectives → final integrator | Predeclared graph without adaptive member selection | Historical mechanism; not formally compared on current code tasks |
-| `blackboard` | Sequential proposals append to shared board, with public feasibility annotations → revision → reconciler | Shared artifacts and feedback, rather than isolated branches | Historical mechanism; no current-cohort confirmation |
-| `bazaar` | Three isolated complete answers → public feasibility filter → model adjudicator | Candidate diversity with a model selector; differs from current deterministic-public-selector variants | Historical mechanism; no current-cohort confirmation |
-| `market` | One bid simulator → deterministic allocation to two prompt-based skill profiles → reports → integrator | Test allocation overhead using uncalibrated self-reported bids | Mechanism prototype; no current-cohort confirmation or calibrated-market claim |
-| `adaptive` | Explicit public task family chooses self-refinement, fixed DAG or blackboard | Predeclared family routing; not a learned per-instance policy | Historical route, distinct from `adaptive_tools`; no v6r1 score |
-| `blackboard_no_validation` | Same shared-board flow, without intermediate feasibility annotations | Ablate the feedback gate while retaining the old blackboard workflow | Historical ablation only, not a current formal feedback-effect estimate |
-| `artifact_contracts` | Shared normalization → task-specific typed work units → feasibility checks/state handoff → deterministic merge | Make artifact boundaries and task-specific contracts executable | Historical specialized prototype; not a generic autonomous organization |
-| `artifact_single` | Same normalization/decomposition hints/objective tools → one logical solver | Control for benefits introduced by deterministic preprocessing/tools | Historical matched-tool control; not the v6r1 tool-single score |
-| `contract_adaptive` | Evidence tasks → artifact contracts; planning/sequential tasks → artifact single | Development-fixed route that preserves single-agent state where specified | Historical routing prototype; no current-cohort confirmation |
-
-Four distinct historical shapes are illustrated below. Calls remain subject to their own archived protocol; these diagrams are not new performance results.
-
-### Historical fixed DAG
-
-```mermaid
-flowchart LR
-  P[Public problem] --> F[Facts and rules report]
-  P --> C[Candidate and dependencies report]
-  P --> A[Exceptions and conflicts report]
-  F --> I[Fixed final integrator]
-  C --> I
-  A --> I
-  I --> O[Final answer]
-```
-
-The three reports are isolated until integration. The graph and briefs are fixed, rather than optimized for a task or learned from confirmation outcomes.
-
-### Historical shared blackboard
-
-```mermaid
-flowchart LR
-  P[Public problem] --> W1[Contributor 1]
-  W1 --> B1[Board plus public feasibility]
-  B1 --> W2[Contributor 2]
-  W2 --> B2[Append proposal and feedback]
-  B2 --> R[Revision contributor]
-  R --> F[Final reconciler]
-```
-
-Later contributors can see earlier board entries. A previous claim is not automatically verified; the ablation omits the intermediate public-feasibility annotations. This is not a full ant-colony system and not evidence of complete decentralization.
-
-### Historical uncalibrated market
-
-```mermaid
-flowchart LR
-  P[Public problem and skill profiles] --> B[One model simulates bids]
-  B --> S[Deterministic top-two allocation]
-  S --> W1[Leased profile 1 report]
-  S --> W2[Leased profile 2 report]
-  W1 --> I[Final integrator]
-  W2 --> I
-```
-
-The bids come from a solicitation simulator, not separately measured worker capabilities. The two profiles use the same underlying model, and their scores are not calibrated success probabilities. This is not a reproduction of a calibrated auction protocol or Agora.
-
-### Historical typed-artifact contracts
-
-```mermaid
-flowchart LR
-  P[Public task] --> N[Shared normalization]
-  N --> D[Task-specific decomposition]
-  D --> W[Typed worker artifacts or ordered state handoff]
-  W --> V[Public feasibility and contract checks]
-  V --> M[Deterministic merge or final artifact]
-```
-
-Evidence work can be sharded, planning branches produce submitted feasible candidates, and sequential work preserves ordered state handoff. Public feasibility and an objective rank of submitted candidates do not prove exhaustive search or optimality. `artifact_single` receives the same deterministic tools so that preprocessing is not attributed to the organization alone.
-
-The market prototype does not calibrate bids using held-out capability evidence. The blackboard is not an implementation of ant-colony optimization. Neither is a faithful reproduction of a similarly named paper or framework.
-
-No official DSH deployment or persistent-ticket workload was executed. The local hierarchy therefore does not establish that this project outperforms DSH's runtime, attention-management or multi-task behavior.
+![Task-family success matrix](../results/main/task_family_heatmap.png)
 
 ## Extending the comparison
 
 1. Specify who can see which messages, when a node runs, what artifact it produces, how artifacts are accepted and when the run stops.
 2. Use the common public-only task projection and real public validator. Record every model, coordination and repair call.
 3. Add tests for information boundaries, resource accounting, selection ties, malformed outputs and tool failures.
-4. Register the strategy in a **new study version**, with fresh development and confirmation data. Adding source after selection changes its source hash and invalidates continuation of the original study.
+4. Register the strategy in a **new preregistered study**, with fresh development and confirmation data. Adding source after selection changes its source hash and invalidates continuation of the original study.
 5. Report quality, actual consumption and failures against strong single-agent and independent-search controls. Preserve negative and incomplete results.
 
 ## Official framework integrations remain future work
@@ -336,3 +253,5 @@ An integration should pin the upstream revision, tool adapter, prompts, terminat
 For example, AutoGen's documented `SelectorGroupChat` broadcasts messages among participants and selects the next speaker; this is an additional shared-context policy to integrate, not a result already measured here. [Official AutoGen documentation](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/selector-group-chat.html).
 
 Real-repository evaluation is also separate work. SWE-bench provides real GitHub issue tasks and its Verified subset contains 500 human-filtered instances; adding its harness would test external validity beyond these three synthetic families. No SWE-bench score is reported by this project. [Official benchmark](https://www.swebench.com/).
+
+[Preliminary mechanism archive / 前期机制档案](../archive/preliminary-study/architecture_history.md)

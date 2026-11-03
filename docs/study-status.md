@@ -1,53 +1,25 @@
-# Study status and configuration inventory
+# Study status / 实验状态
 
-## Evidence ledger
+**Completed and independently checked / 已完成并复核。**
 
-| Study | Status | Interpretation |
-| --- | --- | --- |
-| Early reasoning-task studies | Historical; settings included severe floors | Diagnostics and historical results, not a v5-compatible ranking |
-| Rate-limited or interrupted batches | Invalidated/incomplete | Infrastructure evidence, not architecture superiority |
-| Pre-isolation code-task development | Debug only | Superseded before valid confirmation |
-| v5 code-task confirmation | Completed and audited | Scoped quality improvement; token efficiency not confirmed |
-| Native single-agent pilot | Separate exploratory backend | Small-sample feasibility/ceiling observation, not an API-comparable arm |
-| v6 | Completed; audited original and recomputed decisions agree | See [bilingual results](results-v6.md); primary and secondary declarations are separate |
+| Stage / 阶段 | Design / 设计 | Status / 状态 |
+|---|---|---|
+| Development / 开发 | 9 tasks × 9 policies = 81 cells | Complete; exploratory |
+| Selection / 选择 | One of four non-control candidates | `adaptive_tools` frozen |
+| Confirmation / 独立确认 | 60 fresh tasks × 5 arms = 300 cells | Complete; all four candidate superiority gates not passed |
 
-The research inventory includes **17 historical configurations and four added v6 configurations**. These are versioned research records, not 21 architectures evaluated under one valid common benchmark. Repeated or renamed mechanisms must not be double-counted as independent evidence.
+The primary control is `single_self_review`. Secondary comparisons against `single_tool`, `hierarchy_tool` and `best_of_three` are adjusted together with Holm. [Full results](results.md).
 
-## v6 design
+单体自检为主要质量参照；工具单体、层级和三候选择优为次要对照。开发选择不代表胜过全部基准，分族分析仍是探索。
 
-- Nine strategies on nine development tasks: 81 task runs.
-- Exactly one candidate selected and frozen using development data.
-- Sixty fresh confirmation tasks with five arms: 300 task runs.
-- Confirmation arms: candidate, `single_tool`, `single_self_review`, `hierarchy_tool`, `best_of_three`.
-- Primary control: compute-matched `single_self_review`.
-- Secondary control comparisons: the other three baselines, adjusted together with Holm under the frozen protocol.
+## Evidence boundaries / 证据边界
 
-The implementation registry and frozen protocol define the exact nine strategies, stage budgets, candidate rule and statistical thresholds. Do not infer them from labels alone or choose a favorable comparison after seeing confirmation.
+The original confirmation attempt stopped after 49 cells because of transport failures and unknown usage. That attempt was invalidated. A replacement confirmation used fresh tasks with the same development selection, candidate, source, model, controls and hypotheses. None of the original 49 cells entered the final 300-cell result.
 
-| Implementation | v6 role |
-| --- | --- |
-| `plain_single` | One proposal, no repair; descriptive development control |
-| `single_tool` | Public-pass early stop and failure-triggered repair; confirmation control |
-| `single_self_review` | Compute-matched self-review; primary confirmation control |
-| `hierarchy_tool` | Simplified supervisor–worker; secondary confirmation control |
-| `best_of_three` | Independent proposals selected by public evidence; secondary confirmation control |
-| `bazaar_tool` | Two isolated complete proposals; selectable candidate |
-| `contract_team` | Initial code, independent audit, revision; selectable candidate |
-| `adaptive_tools` | Frozen template-proxy route; selectable candidate |
-| `evidence_gated` | Public-failure/static-risk-triggered escalation; selectable candidate |
+最初因网络与未知计量中断的49个单元全部排除；替代确认使用全新任务，没有改变已冻结的候选、代码或统计问题。恢复记录保留在[原始注册与审计材料](../archive/registrations/README.md)。
 
-The public [v6 reproduction protocol](protocol_v6.md) uses dedicated demonstration seeds, not the original or active study seed values.
+Earlier exploratory studies and the separate native pilot are outside this comparison. See the [archive](../archive/README.md) for provenance. No cross-study pooling is used.
 
-The prior roadmap's larger sample suggestions are proposals, not the final v6 registration. Do not present its suggested counts as executed v6 runs.
+## Follow-up / 后续
 
-## Updating this page
-
-Change a status only from an audited manifest and complete decision artifact. A development leader is not a confirmation winner. Failed or invalidated studies stay visible, and old holdouts become descriptive data once used to design a new strategy.
-
-<!-- BEGIN V6 FINALIZATION -->
-
-## Finalized local v6 state
-
-State: **completed**. Development: 81/81; confirmation: 300/300. The declared primary and three secondary comparisons are reported individually. A null result is not equivalence. Previously valid v5 evidence is unchanged. [Details](results-v6.md).
-
-<!-- END V6 FINALIZATION -->
+The proposed next study examines shared-draft review, correction, damage, observable triggers and stopping. Its offline preparation is not a completed model experiment or a new superiority claim. Retired analyzed tasks cannot be reused as a new blind confirmation.
